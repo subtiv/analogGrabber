@@ -42,7 +42,7 @@ void testApp::update()
 //--------------------------------------------------------------
 void testApp::draw()
 {
-	ofBackground(150, 150, 150);
+	ofBackground(ofColor::red);
 	char text[256];
 	sprintf(text, "fps: %f", ofGetFrameRate());
 	ofSetHexColor(0xffffff);
