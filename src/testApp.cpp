@@ -26,7 +26,7 @@ void testApp::setup()
 
 	// we use a texture because the ofxV4L2 class has no draw method (yet)
 	// we use GL_LUMINANCE because the ofxV4L2 class supports only grayscale (for now)
-    camtex.allocate(camWidth, camHeight, GL_LUMINANCE);
+    camtex.allocate(camWidth, camHeight, GL_RGB);
 }
 
 //--------------------------------------------------------------
@@ -35,7 +35,7 @@ void testApp::update()
 	v4l2cam1.grabFrame();
 	if(v4l2cam1.isNewFrame())
 	{
-		camtex.loadData(v4l2cam1.getPixels(), camWidth, camHeight, GL_LUMINANCE);
+		camtex.loadData(v4l2cam1.getPixels(), camWidth, camHeight, GL_RGB);
 	}
 }
 
