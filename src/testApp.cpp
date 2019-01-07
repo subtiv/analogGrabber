@@ -27,6 +27,18 @@ void testApp::setup()
 	// we use a texture because the ofxV4L2 class has no draw method (yet)
 	// we use GL_LUMINANCE because the ofxV4L2 class supports only grayscale (for now)
     camtex.allocate(camWidth, camHeight, GL_RGB);
+
+	gui.setup(); // most of the time you don't need a name
+	gui.add(pa.setup("pa", v4l2cam1.pa, 0, 4));
+	gui.add(pb.setup("pb", v4l2cam1.pb, 0, 32));
+	gui.add(pc.setup("pc", v4l2cam1.pc, 0, 256));
+	gui.add(pd.setup("pd", v4l2cam1.pd, 0, 10));
+	gui.add(pe.setup("pe", v4l2cam1.pe, 0, 3));
+	gui.add(pf.setup("pf", v4l2cam1.pf, 0, 5));
+	gui.add(pg.setup("pg", v4l2cam1.pg, 0, 4));
+
+
+
 }
 
 //--------------------------------------------------------------
@@ -37,6 +49,15 @@ void testApp::update()
 	{
 		camtex.loadData(v4l2cam1.getPixels(), camWidth, camHeight, GL_RGB);
 	}
+
+	v4l2cam1.pa = (float)pa;
+	v4l2cam1.pb = (float)pb;
+	v4l2cam1.pc = (float)pc;
+	v4l2cam1.pd = (float)pd;
+	v4l2cam1.pe = (float)pe;
+	v4l2cam1.pf = (float)pf;
+	v4l2cam1.pg = (float)pg;
+
 }
 
 //--------------------------------------------------------------
@@ -51,6 +72,8 @@ void testApp::draw()
 	ofSetHexColor(0x333333);
 	sprintf(text, "use 'a' to toggle autogain (value: %d)\nuse 'g' to raise gain and 'G' to lower gain (value: %3f)", set_autogain, set_gain);
 	ofDrawBitmapString(text, 20, 60 + camHeight);
+
+	gui.draw();
 }
 
 //--------------------------------------------------------------

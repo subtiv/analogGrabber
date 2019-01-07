@@ -2,6 +2,8 @@
 
 #include "ofMain.h"
 #include "ofxV4L2.h"
+#include "ofxGui.h"
+
 
 class testApp : public ofBaseApp{
 
@@ -21,6 +23,18 @@ class testApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
 
 		ofTexture camtex;
+			ofxPanel gui;
+	
+
+		           
+            ofxFloatSlider pa;
+            ofxFloatSlider pb;
+            ofxFloatSlider pc ;
+            ofxFloatSlider pd ;
+            ofxFloatSlider pe ;
+            ofxFloatSlider pf ;
+            ofxFloatSlider pg ;
+
 
     private:
 

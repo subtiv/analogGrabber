@@ -1,1 +1,1 @@
-ofxV4L2
+ofxV4L2 ofxGui
